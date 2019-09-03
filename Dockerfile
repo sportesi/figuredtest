@@ -10,7 +10,8 @@ RUN apk update && apk add \
     gcc \
     g++ \
     autoconf \
-    make
+    make \
+    php7-pdo_pgsql
 
 RUN pecl install mongodb
 
