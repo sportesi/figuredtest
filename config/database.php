@@ -54,8 +54,14 @@ return [
             'username' => env('MDB_USERNAME'),
             'password' => env('MDB_PASSWORD'),
             'options' => [
-                'database' => env('MDB_DATABASE')
+                'database' => 'admin'
             ]
+        ],
+
+        'sqlite' => [
+            'driver'   => 'sqlite',
+            'database' => storage_path('database.sqlite'),
+            'prefix'   => '',
         ],
 
     ],

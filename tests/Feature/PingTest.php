@@ -15,5 +15,8 @@ class PingTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+        $response->assertSee('Laravel');
+        $response->assertSee('Login');
+        $response->assertSee('Register');
     }
 }
