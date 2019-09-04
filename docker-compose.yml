@@ -11,8 +11,9 @@ services:
 
   phpfpm:
     image: sportesi/figuredtest:latest
+    working_dir: /usr/share/nginx/html/
     volumes:
-      - ./:/var/www/html
+      - ./:/usr/share/nginx/html/
   
   mongodb:
     image: mongo:latest
