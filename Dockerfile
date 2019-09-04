@@ -10,7 +10,8 @@ RUN chmod -R 775 ./storage ./bootstrap/cache
 
 RUN apk update && apk add \
     gcc g++ autoconf make vim \
-    php7-pdo_pgsql openssl-dev libssl1.1
+    php7-pdo_pgsql openssl-dev libssl1.1 \
+    nodejs npm
 
 RUN pecl install mongodb
 
