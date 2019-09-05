@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <card-component title="Latest Posts">
-                <alert-component>{{ session('status') }}</alert-component>
+                <alert-component type="success">{{ session('status') }}</alert-component>
 
                 <post-component v-for="post in {{ $jPosts }}" v-bind:post="post"></post-component>
 
