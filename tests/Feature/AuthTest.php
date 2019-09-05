@@ -17,7 +17,6 @@ class AuthTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewIs('auth.register');
-        $response->assertSee('Register');
     }
 
     public function testLoginPingTest()
@@ -25,10 +24,7 @@ class AuthTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertStatus(200);
-        $response->assertSee('E-Mail Address');
-        $response->assertSee('Password');
-        $response->assertSee('Remember Me');
-        $response->assertSee('Forgot Your Password?');
+        $response->assertViewIs('auth.login');
     }
 
     public function testRegisterTest()
@@ -58,6 +54,6 @@ class AuthTest extends TestCase
             'password' => '123456'
         ]);
 
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/');
     }
 }

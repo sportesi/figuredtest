@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-      <p v-for="paragraph in post.body" v-bind:key="paragraph">{{ paragraph }}</p>
+      <p>{{ post.body }}</p>
     </div>
 
     <div class="card-footer" v-if="this.$slots.footer">
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ["post"]
+  props: ["post", "auth"]
 };
 </script>
 

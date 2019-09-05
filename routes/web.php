@@ -16,3 +16,5 @@ Auth::routes();
 Route::get('/', 'Frontend\HomeController@index')->name('frontend_home');
 
 Route::get('/home', 'Backend\HomeController@index')->name('backend_home');
+
+Route::post('/post', 'Frontend\PostController@store')->name('frontend_post_store');
