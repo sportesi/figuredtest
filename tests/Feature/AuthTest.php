@@ -40,7 +40,7 @@ class AuthTest extends TestCase
             'password_confirmation' => '123123'
         ]);
 
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/');
     }
 
     public function testLoginTest()
