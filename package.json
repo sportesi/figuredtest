@@ -23,5 +23,7 @@
         "vue": "^2.5.7",
         "vue-template-compiler": "^2.6.10"
     },
-    "dependencies": {}
+    "dependencies": {
+        "fs": "0.0.1-security"
+    }
 }
