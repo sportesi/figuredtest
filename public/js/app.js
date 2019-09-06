@@ -1828,6 +1828,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["post", "auth"]
 });
@@ -1910,8 +1921,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["description", "name", "type", "required"]
+  props: ["description", "name", "type", "required", "value"]
 });
 
 /***/ }),
@@ -1959,13 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["description", "name", "required"]
+  props: ["description", "name", "required", "value"]
 });
 
 /***/ }),
@@ -2014,7 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["text", "id", "action"]
+  props: ["text", "id", "action", "method"]
 });
 
 /***/ }),
@@ -38158,8 +38165,76 @@ var render = function() {
       _c("p", [_vm._v(_vm._s(_vm.post.body))])
     ]),
     _vm._v(" "),
-    this.$slots.footer
-      ? _c("div", { staticClass: "card-footer" }, [_vm._t("footer")], 2)
+    this.$slots.footer || _vm.auth
+      ? _c(
+          "div",
+          { staticClass: "card-footer" },
+          [
+            _vm._t("footer"),
+            _vm._v(" "),
+            _vm.auth
+              ? _c(
+                  "div",
+                  { staticClass: "float-right" },
+                  [
+                    _c(
+                      "btn-form-modal",
+                      {
+                        attrs: {
+                          text: "Edit Post",
+                          method: "POST",
+                          id: "edit-post" + _vm.post._id,
+                          action: "/post/edit/" + _vm.post._id
+                        }
+                      },
+                      [
+                        _vm._t("csrf-edit"),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "_method",
+                            value: "put"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input-component", {
+                          attrs: {
+                            name: "id",
+                            type: "hidden",
+                            description: "id",
+                            value: _vm.post._id
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input-component", {
+                          attrs: {
+                            name: "title",
+                            type: "text",
+                            required: "true",
+                            description: "Title",
+                            value: _vm.post.title
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("txta-component", {
+                          attrs: {
+                            name: "body",
+                            required: "true",
+                            description: "Body",
+                            value: _vm.post.body
+                          }
+                        })
+                      ],
+                      2
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ],
+          2
+        )
       : _vm._e()
   ])
 }
@@ -38286,28 +38361,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group row" }, [
-    _c(
-      "label",
-      {
-        staticClass: "col-md-4 col-form-label text-md-right",
-        attrs: { for: "name" }
-      },
-      [_vm._v(_vm._s(_vm.description))]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("input", {
-        class: ["form-control"],
-        attrs: {
-          id: _vm.name,
-          type: _vm.type,
-          name: _vm.name,
-          required: _vm.required
-        }
-      })
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "form-group row", attrs: { hidden: _vm.type === "hidden" } },
+    [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-4 col-form-label text-md-right",
+          attrs: { for: "name" }
+        },
+        [_vm._v(_vm._s(_vm.description))]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("input", {
+          class: ["form-control"],
+          attrs: {
+            id: _vm.name,
+            type: _vm.type,
+            name: _vm.name,
+            required: _vm.required
+          },
+          domProps: { value: _vm.value }
+        })
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38383,7 +38463,8 @@ var render = function() {
     _c("div", { staticClass: "col-md-6" }, [
       _c("textarea", {
         class: ["form-control"],
-        attrs: { id: _vm.name, name: _vm.name, required: _vm.required }
+        attrs: { id: _vm.name, name: _vm.name, required: _vm.required },
+        domProps: { value: _vm.value }
       })
     ])
   ])
@@ -38441,24 +38522,28 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _c("form", { attrs: { method: "POST", action: _vm.action } }, [
-                _c("div", { staticClass: "modal-header" }, [
-                  _c("h5", { staticClass: "modal-title" }, [
-                    _vm._v(_vm._s(_vm.text))
+              _c(
+                "form",
+                { attrs: { method: _vm.method, action: _vm.action } },
+                [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c("h5", { staticClass: "modal-title" }, [
+                      _vm._v(_vm._s(_vm.text))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0)
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "modal-body" },
-                  [_vm._t("default")],
-                  2
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ])
+                  _c(
+                    "div",
+                    { staticClass: "modal-body" },
+                    [_vm._t("default")],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              )
             ])
           ]
         )

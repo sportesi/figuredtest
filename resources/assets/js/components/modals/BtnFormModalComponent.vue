@@ -11,7 +11,7 @@
     <div class="modal fade" :id="id" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form method="POST" :action="action">
+          <form :method="method" :action="action">
             <div class="modal-header">
               <h5 class="modal-title">{{ text }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  props: ["text", "id", "action"]
+  props: ["text", "id", "action", "method"]
 };
 </script>
 

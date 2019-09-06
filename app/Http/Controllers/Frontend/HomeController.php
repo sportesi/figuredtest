@@ -14,7 +14,7 @@ class HomeController extends Controller
 
         return view('home', [
             'posts' => $posts,
-            'jPosts' => json_encode($posts->toArray()['data'])
+            'isLoggedIn' => auth()->user() ? 1 : 0
         ]);
     }
 }

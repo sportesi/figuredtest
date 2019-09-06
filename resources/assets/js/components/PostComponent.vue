@@ -13,8 +13,19 @@
       <p>{{ post.body }}</p>
     </div>
 
-    <div class="card-footer" v-if="this.$slots.footer">
+    <div class="card-footer" v-if="this.$slots.footer || auth">
       <slot name="footer"></slot>
+      <div class="float-right" v-if="auth">
+        
+        <btn-form-modal text="Edit Post" method="POST" :id="'edit-post' + post._id" :action="'/post/edit/' + post._id">
+          <slot name="csrf-edit"></slot>
+          <input type="hidden" name="_method" value="put" />
+          <input-component name="id" type="hidden" description="id" :value="post._id"></input-component>
+          <input-component name="title" type="text" required="true" description="Title" :value="post.title"></input-component>
+          <txta-component name="body" required="true" description="Body" :value="post.body"></txta-component>
+        </btn-form-modal>
+        
+      </div>
     </div>
   </div>
 </template>

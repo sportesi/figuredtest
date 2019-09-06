@@ -15,4 +15,18 @@ class PostController extends Controller
 
         return redirect()->route('frontend_home');
     }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::where(['_id' => $id])->get()->first();
+
+        $updateData = $request->only(['title', 'body']);
+
+        $post->title = $updateData['title'];
+        $post->body = $updateData['body'];
+
+        $post->save();
+
+        return redirect()->route('frontend_home');
+    }
 }
