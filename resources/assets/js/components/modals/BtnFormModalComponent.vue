@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="float-left ml-1 mr-1">
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      :class="['btn', cssclass || 'btn-primary']"
       data-toggle="modal"
       :data-target="'#' + id"
     >{{ text }}</button>
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" :class="['btn', cssclass || 'btn-primary']">{{ savebtn || 'Save' }}</button>
             </div>
           </form>
         </div>
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  props: ["text", "id", "action", "method"]
+  props: ["text", "id", "action", "method", "cssclass", "savebtn"]
 };
 </script>
 

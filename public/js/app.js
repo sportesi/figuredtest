@@ -1839,6 +1839,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["post", "auth"]
 });
@@ -2021,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["text", "id", "action", "method"]
+  props: ["text", "id", "action", "method", "cssclass", "savebtn"]
 });
 
 /***/ }),
@@ -38227,6 +38233,35 @@ var render = function() {
                         })
                       ],
                       2
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "btn-form-modal",
+                      {
+                        attrs: {
+                          cssclass: "btn-danger",
+                          text: "Delete Post",
+                          savebtn: "Delete",
+                          method: "POST",
+                          id: "delete-post" + _vm.post._id,
+                          action: "/post/" + _vm.post._id
+                        }
+                      },
+                      [
+                        _vm._t("csrf-edit"),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "_method",
+                            value: "delete"
+                          }
+                        }),
+                        _vm._v(
+                          "\n        You are going to delete this post. Are you sure?\n      "
+                        )
+                      ],
+                      2
                     )
                   ],
                   1
@@ -38491,11 +38526,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "float-left ml-1 mr-1" }, [
     _c(
       "button",
       {
-        staticClass: "btn btn-primary",
+        class: ["btn", _vm.cssclass || "btn-primary"],
         attrs: {
           type: "button",
           "data-toggle": "modal",
@@ -38541,7 +38576,25 @@ var render = function() {
                     2
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        class: ["btn", _vm.cssclass || "btn-primary"],
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v(_vm._s(_vm.savebtn || "Save"))]
+                    )
+                  ])
                 ]
               )
             ])
@@ -38568,27 +38621,6 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
-    ])
   }
 ]
 render._withStripped = true

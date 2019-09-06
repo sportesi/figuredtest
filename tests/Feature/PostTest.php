@@ -61,4 +61,21 @@ class PostTest extends TestCase
         $this->assertNotEquals($post->title, $updatedPost->title);
         $this->assertNotEquals($post->body, $updatedPost->body);
     }
+
+    public function testDeleteBlogPostTest()
+    {
+        $post = factory(Post::class)->create();
+        $user = factory(User::class)->create();
+
+        $reponse = $this->actingAs($user)->delete('/post/' . $post->_id, [
+            'title' => $this->faker->sentence,
+            'body' => $this->faker->paragraph,
+        ]);
+
+        $reponse->assertStatus(302);
+
+        $updatedPost = Post::where(['_id' => $post->_id])->get()->first();
+
+        $this->assertNull($updatedPost);
+    }
 }

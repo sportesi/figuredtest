@@ -24,6 +24,12 @@
           <input-component name="title" type="text" required="true" description="Title" :value="post.title"></input-component>
           <txta-component name="body" required="true" description="Body" :value="post.body"></txta-component>
         </btn-form-modal>
+
+        <btn-form-modal cssclass='btn-danger' text="Delete Post" savebtn="Delete" method="POST" :id="'delete-post' + post._id" :action="'/post/' + post._id">
+          <slot name="csrf-edit"></slot>
+          <input type="hidden" name="_method" value="delete" />
+          You are going to delete this post. Are you sure?
+        </btn-form-modal>
         
       </div>
     </div>

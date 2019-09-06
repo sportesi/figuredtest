@@ -17,3 +17,4 @@ Route::get('/', 'Frontend\HomeController@index')->name('frontend_home');
 
 Route::post('/post', 'Frontend\PostController@store')->name('frontend_post_store');
 Route::put('/post/edit/{id}', 'Frontend\PostController@update')->name('frontend_post_update');
+Route::delete('/post/{id}', 'Frontend\PostController@delete')->name('frontend_post_delete');

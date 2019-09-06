@@ -29,4 +29,12 @@ class PostController extends Controller
 
         return redirect()->route('frontend_home');
     }
+
+    public function delete($id)
+    {
+        $post = Post::where(['_id' => $id])->get()->first();
+        $post->delete();
+        
+        return redirect()->route('frontend_home');
+    }
 }
