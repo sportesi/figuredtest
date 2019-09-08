@@ -1,8 +1,8 @@
 FROM php:7-fpm-alpine
 
-WORKDIR /var/www/html
+WORKDIR /usr/share/nginx/html/
 
-COPY . /var/www/html
+COPY . /usr/share/nginx/html/
 
 RUN chgrp -R www-data ./storage ./bootstrap/cache 
 
