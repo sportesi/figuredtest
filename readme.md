@@ -5,11 +5,14 @@ To run this test just do the following:
 **You need to have docker and docker-compose installed to run this app**
 
 1. clone this repo
-2. cd into dir
-3. `docker-compose up -d`
-4. `docker-compose exec --user=1000:www-data phpfpm ./composer.phar install`
-5. `docker-compose exec --user=1000:www-data phpfpm ./artisan migrate:fresh --seed`
-6. you're good to go!
+1. `cd ./figuredtest`
+1. `docker-compose up -d`
+1. `docker-compose exec --user=1000:www-data phpfpm ./composer.phar install`
+1. `cp .env.example .env`
+1. `docker-compose exec --user=1000:www-data phpfpm ./artisan migrate:fresh --seed`
+1. `docker-compose exec phpfpm chown -R 1000:www-data ./storage ./bootstrap/cache`
+1. `docker-compose exec phpfpm chmod -R 775 ./storage ./bootstrap/cache`
+1. you're good to go!
 
 Please feel free to raise any issues you encounter.
 
