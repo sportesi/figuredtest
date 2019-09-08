@@ -4,7 +4,7 @@ To run this test just do the following:
 
 **You need to have docker and docker-compose installed to run this app**
 
-1. clone this repo
+1. Clone this repo
 1. `cd ./figuredtest`
 1. `docker-compose up -d`
 1. `docker-compose exec --user=1000:www-data phpfpm ./composer.phar install`
@@ -12,7 +12,7 @@ To run this test just do the following:
 1. `docker-compose exec --user=1000:www-data phpfpm ./artisan migrate:fresh --seed`
 1. `docker-compose exec phpfpm chown -R 1000:www-data ./storage ./bootstrap/cache`
 1. `docker-compose exec phpfpm chmod -R 775 ./storage ./bootstrap/cache`
-1. you're good to go!
+1. You're good to go! open your browser on http://localhost
 
 Please feel free to raise any issues you encounter.
 
